@@ -1,0 +1,57 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sinovatech.entity.mapper.order.FlashOrderMapper">
+    <resultMap type="com.sinovatech.entity.mapper.order.FlashOrder" id="flashOrderMap">
+        <id column="id" property="id"/>
+        <result column="userId" property="userId"/>
+        <result column="periodId" property="periodId"/>
+        <result column="orderTime" property="orderTime"/>
+        <association property="activityProduct" javaType="ActivityProduct" column="productId" resultMap="productMap" />
+        <association property="activity" javaType="Activity" column="acId" resultMap="activitymap" />
+    </resultMap>
+
+    <resultMap type="com.sinovatech.entity.ActivityProduct" id="productMap">
+        <id column="productId" property="id"/>
+        <result column="productName" property="productName"/>
+    </resultMap>
+
+    <resultMap type="com.sinovatech.entity.mapper.activity.Activity" id="activitymap">
+        <result column="acId" property="acId"/>
+        <result column="acName" property="acName"/>
+        <result column="descreption" property="descreption"/>
+        <result column="acType" property="acType"/>
+        <result column="beginTime" property="beginTime"/>
+        <result column="endTime" property="endTime"/>
+    </resultMap>
+
+    <select id="getFlashOrder" resultMap="flashOrderMap" parameterType="String">
+        select aco.id as id,
+                aco.user_id as userId,
+                ac.ac_name as acName,
+                ac.ac_code as acId,
+                acsko.period_id as periodId,
+                acp.id as productId,
+                p.product_name as productName,
+                aco.create_time as orderTime
+        from yx_ac_order aco,
+              yx_ac_sk_order acsko,
+              yx_ac_product acp,
+              yx_product p,
+              yx_sk_activity_product skacp,
+              yx_activity ac
+        where     aco.id = acsko.id
+        and acsko.ac_sk_product_id = acp.id
+        and acp.product_id = p.id
+        and acsko.ac_sk_product_id = skacp.id
+        and skacp.ac_id = ac.id
+        and skacp.ac_id = #{id}
+        <include refid="orderBy">
+            <property name="table" value="aco"/>
+            <property name="column" value="create_time" />
+            <property name="key" value="desc"/>
+        </include>
+    </select>
+
+    <sql id="orderBy">order by ${table}.${column} ${key}</sql>
+
+</mapper>

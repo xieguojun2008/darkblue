@@ -1,0 +1,9 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sinovatech.activity.entity.product.Mapper">
+    <resultMap type="com.sinovatech.entity.ActivityProduct" id="productMap">
+        <id column="productId" property="id"/>
+        <result column="productName" property="productName"/>
+    </resultMap>
+
+</mapper>

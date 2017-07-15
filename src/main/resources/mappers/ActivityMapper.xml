@@ -1,0 +1,32 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sinovatech.entity.mapper.activity.ActivityMapper">
+    <resultMap type="com.sinovatech.entity.mapper.activity.Activity" id="activitymap">
+        <id column="id" property="id"/>
+        <result column="acId" property="acId"/>
+        <result column="acName" property="acName"/>
+        <result column="descreption" property="descreption"/>
+        <result column="acType" property="acType"/>
+        <result column="beginTime" property="beginTime"/>
+        <result column="endTime" property="endTime"/>
+    </resultMap>
+
+    <select id="getActivity" resultMap="activitymap">
+        select ac_code as acId,
+                ac_name as acName,
+                descreption as description,
+                ac_Type as acType,
+                begin_time as beginTime,
+                end_time as endTime
+        from yx_activity
+        where ac_code = #{id}
+    </select>
+
+    <insert id="addActivity" parameterType="Activity">
+        INSERT INTO `activity`.`activity`
+        (`id`, `acId`, `acName`, `description`, `acType`, `beginTime`, `endTime`)
+        VALUES
+        (#{id},#{acId},#{acName},#{description},#{acType},#{beginTime,jdbcType=TIMESTAMP},#{endTime,jdbcType=TIMESTAMP});
+    </insert>
+
+</mapper>

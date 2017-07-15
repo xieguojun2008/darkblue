@@ -1,0 +1,44 @@
+[
+  {
+    "activity": {
+      "acId": "AC20170421113519",
+      "acName": "ws秒杀"
+    },
+    "activityProduct": {
+      "id": "0453dcc1dd4141d1a0d1fd49682465c3",
+      "productName": "流量"
+    },
+    "id": "2fa4da944b2542fe9c15b20680c87037",
+    "orderTime": 1492704000000,
+    "periodId": "d4f9a6fa3b14447b8a5e542089920989",
+    "userId": "13805501234"
+  },
+  {
+    "activity": {
+      "acId": "AC20170421113519",
+      "acName": "ws秒杀"
+    },
+    "activityProduct": {
+      "id": "0453dcc1dd4141d1a0d1fd49682465c3",
+      "productName": "流量"
+    },
+    "id": "9315bb3694274fccaaa7b5185b48457d",
+    "orderTime": 1492704000000,
+    "periodId": "07a467b0fafb43f29045a1585a64451c",
+    "userId": "13805506789"
+  },
+  {
+    "activity": {
+      "acId": "AC20170421113519",
+      "acName": "ws秒杀"
+    },
+    "activityProduct": {
+      "id": "0453dcc1dd4141d1a0d1fd49682465c3",
+      "productName": "流量"
+    },
+    "id": "c997d762946e45acaa65c489c784d5c6",
+    "orderTime": 1492704000000,
+    "periodId": "07a467b0fafb43f29045a1585a64451c",
+    "userId": "13805509876"
+  }
+]

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <!-- 引入XFire预配置信息 -->
+    <import resource="classpath:org/codehaus/xfire/spring/xfire.xml" />
+
+    <!-- 地址绑定 -->
+    <bean id="addressingHandler"
+          class="org.codehaus.xfire.addressing.AddressingInHandler" />
+
+    <!--测试接口 -->
+    <bean name="activityService" class="org.codehaus.xfire.spring.ServiceBean">
+        <property name="serviceBean" ref="activityServiceImpl" />
+        <property name="serviceClass" value="com.sinovatech.services.IActivityService" />
+        <property name="inHandlers">
+            <list>
+                <ref bean="addressingHandler" />
+            </list>
+        </property>
+    </bean>
+
+    <bean id="activityServiceImpl" class="com.sinovatech.services.impl.ActivityServiceImpl"/>
+</beans>
